@@ -105,4 +105,4 @@ echo "}" >> hello.c
 arm-none-linux-gnueabi-gcc -static hello.c -o hello
 echo hello | cpio -o --format=newc > rootfs
 
-qemu-system-arm -M versatilepb -m 128M -kernel zImage -initrd rootfs -append "root=/dev/ram rdinit=/hello" -nographic
+qemu-system-arm -M versatilepb -m 128M -kernel linux-compiled/zImage -initrd rootfs -append "root=/dev/ram rdinit=/hello" -nographic
