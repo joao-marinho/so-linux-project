@@ -89,7 +89,7 @@ make ARCH=arm CROSS_COMPILE=arm-none-eabi- all
 cd ..
 
 if [ ! -d linux-compiled ]; then
-    mkdir linux-compiled
+	mkdir linux-compiled
 fi
 
 cp $LINUX_KERNEL_DIRECTORY/arch/arm/boot/zImage ./linux-compiled/
@@ -105,4 +105,4 @@ echo "}" >> hello.c
 arm-none-linux-gnueabi-gcc -static hello.c -o hello
 echo hello | cpio -o --format=newc > rootfs
 
-qemu-system-arm -M versatilepb -m 128M -kernel linux-compiled/zImage -initrd rootfs -append "root=/dev/ram rdinit=/hello" -nographic
+qemu-system-arm -M versatilepb -m 128M -kernel linux-compiled/zImage -initrd rootfs -append "root=/dev/ram rdinit=/hello console=ttyAMA0,115200" -nographic
